@@ -1,0 +1,232 @@
+@mixin shadow($color: rgba(0,0,0,0.1)) {
+  -moz-box-shadow: 0px 0px 5px 0px $color;
+  -webkit-box-shadow: 0px 0px 5px 0px $color;
+  box-shadow: 0px 0px 5px 0px $color;
+}
+@mixin layout($line: 2) {
+  height: -moz-calc(100% - 40px);
+	height: -webkit-calc(100% - 40px);
+  height: calc(100% - 40px);
+  padding: 20px;
+  .Breadcrumb{
+    width: 300px;
+    height: 14px;
+    line-height: 14px;
+    font-size: 14px;
+    color: #333333;
+    border-left: 2px solid #409EFF;
+    padding-left: 7px;
+    margin: 0 0 20px;
+    a{
+      color: #333333;
+      text-decoration: none;
+      &:hover{
+        color: #409EFF;
+      }
+    }
+    b{
+      font-weight: normal;
+    }
+    span{
+      display: inline-block;
+      font-weight: bold;
+    }
+  }
+  >.block{
+    width: -moz-calc(100% - 40px);
+		width: -webkit-calc(100% - 40px);
+		width: calc(100% - 40px);
+    position: absolute;
+    left: 20px;
+    top: 54px;
+    bottom: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius:4px;
+    @include shadow;
+    header{
+      height: 60 * $line + 24 + px;
+      padding: 0 20px;
+      border-bottom: 1px solid #E6E6E6;
+      overflow-x: auto;
+      .row{
+        white-space:nowrap;
+        button{
+          vertical-align: middle;
+          margin-top: 24px;
+          margin-right: 15px;
+        }
+        >.el-input{
+          width: 180px;
+          display: inline-block;
+        }
+        .query-item{
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 15px;
+          margin-top: 24px;
+          label{
+            font-size:14px;
+            color: #666;
+            margin-right: 10px;
+          }
+          >.el-select{
+            width: 180px !important;
+          }
+        }
+      }
+    }
+    .table-box{
+      width: 100%;
+      position: absolute;
+      left: 0;
+      @if( $line != 0 ){
+        top: 60 * $line + 24 + px;
+      }
+      @if( $line == 0 ){
+        top: 0;
+      }
+      bottom: 64px;
+      padding: 24px 0 0;
+      box-sizing: border-box;
+      th{
+        font-size: 14px;
+        padding: 8px 0;
+        background-color: #EFF3F8 !important;
+        border: none;
+        font-weight: normal;
+      }
+      td{
+        border-right: none;
+      }
+      .el-table .el-table__row .cell{
+        line-height: 20px;
+      }
+    }
+    footer{
+      width: 100%;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 64px;
+      box-sizing: border-box;
+      .el-pagination{
+        height: 64px;
+        padding: 18px 20px;
+        text-align: right;
+        background-color: #fff;
+        box-sizing: border-box;
+        button{
+          margin: 0;
+          height: 28px;
+          line-height: 28px;
+          color: #666;
+          border: 1px solid #CDD6DB;
+          border-radius: 4px;
+          background-color: #fff;
+        }
+        ul{
+          li{
+            height: 28px;
+            line-height: 28px;
+            border: 1px solid #CDD6DB;
+            border-radius: 4px;
+            background-color: #fff;
+            color: #666;
+            font-weight: normal;
+          }
+        }
+        .el-pagination__jump{
+          margin-left: 0;
+        }
+        .el-input{
+          font-size: 14px;
+          .el-input__inner{
+            height: 28px;
+            line-height: 28px;
+          }
+          .el-input__icon{
+            line-height: 28px;
+          }
+          .el-input-group__append{
+            padding: 0 12px;
+          }
+        }
+      }
+    }
+  }
+}
+.el-dialog{
+  width: 500px !important;
+  .el-dialog__header{
+    height: 66px;
+    line-height: 66px;
+    text-align: center;
+    font-size: 18px;
+    padding: 0;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eaeaea;
+    .el-dialog__title{
+      color: #666666;
+    }
+  }
+  .el-dialog__body{
+    padding: 35px 40px 20px 40px;
+    max-height: 400px;
+    overflow-y: auto;
+    .el-form-item__label{
+      font-size: 12px;
+      color: #666;
+      line-height: 36px;
+      text-align: right;
+    }
+    .is-required .el-form-item__label::before{
+      margin-left: -9px;
+    }
+    .el-form-item{
+      margin-bottom: 20px;
+      line-height: 36px;
+    }
+    .el-form-item__content{
+      line-height: 36px;
+      font-size: 12px;
+      .el-input{
+        font-size: 12px;
+        .el-input__inner{
+          height: 36px;
+          line-height: 36px;
+          border-color: #eaeaea;
+        }
+        .el-input__icon{
+          line-height: 36px;
+        }
+      }
+      .el-select{
+        width: 100%;
+      }
+      .el-date-editor{
+        width: 100%;
+      }
+      .el-textarea{
+        font-size: 12px;
+        .el-textarea__inner{
+          border-color: #eaeaea;
+        }
+      }
+    }
+  }
+  .el-dialog__footer{
+    padding: 0 26px 0 0;
+    height: 68px;
+    border-top: 1px solid #eaeaea;
+    button{
+      margin-top: 16px;
+      width: 90px;
+      height: 36px;
+      padding: 0;
+    }
+  }
+}
+.el-tooltip__popper{
+  max-width: 300px;
+}
